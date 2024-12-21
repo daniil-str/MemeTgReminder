@@ -1,10 +1,14 @@
 __author__ = 'Danya'
 
+# TODO: распилить проект
+
+# TODO: починить requirements.txt
+
 import logging
 import os
 import re
 import sqlite3
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from dotenv import load_dotenv
 from telegram import ForceReply, Update, Bot
@@ -33,8 +37,10 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Send a message when the command /start is issued."""
     ...
 
+# TODO: создать БД если её нет
+
 insert_query = """
-INSERT INTO users (message_id, chat_id, user_id, time_of_day) VALUES (?, ?, ?, ?);
+INSERT INTO messages (message_id, chat_id, user_id, time_of_day) VALUES (?, ?, ?, ?);
 """
 
 TIME_PATTERN = re.compile(r"\d{2}:\d{2}")
@@ -52,6 +58,8 @@ async def listener(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         cursor = connection.cursor()
 
         cursor.execute(insert_query, [(message_id, chat_id, usr_id, time_of_day)][0])
+        # TODO: добавить логгирование
+
         connection.commit()
         cursor.close()
         connection.close()
@@ -60,9 +68,11 @@ async def check_and_send_messages(context: CallbackContext) -> None:
     conn = sqlite3.connect("mydatabase.db")
     cursor = conn.cursor()
 
-    current_time = datetime.now().strftime("%H:%M")
+    # TODO: время сервера отличается от Московского
+    current_time = (datetime.now() - timedelta(hours=3)).strftime("%H:%M")
 
-    cursor.execute("SELECT chat_id, message_id, user_id, time_of_day FROM users")
+
+    cursor.execute("SELECT chat_id, message_id, user_id, time_of_day FROM messages")
     rows = cursor.fetchall()
 
     for chat_id, message_id, user_id, message_time in rows:
@@ -74,11 +84,10 @@ async def check_and_send_messages(context: CallbackContext) -> None:
                 from_chat_id=chat_id)
             logging.info(f"Сообщение {message_id} из чата {chat_id} в чат {user_id}")
 
-            cursor.execute("delete from users where message_id = ?", (message_id,))
+            cursor.execute("delete from messages where message_id = ?", (message_id,))
             conn.commit()
 
     conn.close()
-
 
 def main() -> None:
     application = Application.builder().token(TOKEN).build()
