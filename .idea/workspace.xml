@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9390792-1ac6-4819-b8f5-8542cfd6c4f2" name="Changes" comment="Промежуточный код: умеет слушать сообщения, записывать в базу форварды бота. Начал реализовывать работу с планировщиком">
+    <list default="true" id="d9390792-1ac6-4819-b8f5-8542cfd6c4f2" name="Changes" comment="Готово MVP: принимает время напоминания и сообщение, напоминает в нужное время">
       <change afterPath="$PROJECT_DIR$/schemas.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
@@ -172,7 +172,7 @@
       <workItem from="1734536185016" duration="1298000" />
       <workItem from="1734537586537" duration="7791000" />
       <workItem from="1734783201709" duration="452000" />
-      <workItem from="1734783709032" duration="7999000" />
+      <workItem from="1734783709032" duration="8383000" />
     </task>
     <task id="LOCAL-00001" summary="Initial">
       <option name="closed" value="true" />
@@ -198,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734545644256</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Готово MVP: принимает время напоминания и сообщение, напоминает в нужное время">
+      <option name="closed" value="true" />
+      <created>1734792257070</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1734792257070</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,7 +238,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial" />
     <MESSAGE value="Промежуточный код: умеет слушать сообщения, записывать в базу форварды бота. Начал реализовывать работу с планировщиком" />
-    <option name="LAST_COMMIT_MESSAGE" value="Промежуточный код: умеет слушать сообщения, записывать в базу форварды бота. Начал реализовывать работу с планировщиком" />
+    <MESSAGE value="Готово MVP: принимает время напоминания и сообщение, напоминает в нужное время" />
+    <option name="LAST_COMMIT_MESSAGE" value="Готово MVP: принимает время напоминания и сообщение, напоминает в нужное время" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -244,6 +253,6 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/MemeTgReminder$MemeTgReminder.coverage" NAME="MemeTgReminder Coverage Results" MODIFIED="1734791859665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/MemeTgReminder$MemeTgReminder.coverage" NAME="MemeTgReminder Coverage Results" MODIFIED="1734792030533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
