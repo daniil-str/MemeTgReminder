@@ -1,5 +1,3 @@
-# TODO: починить requirements.txt
-
 import logging
 import os
 import re

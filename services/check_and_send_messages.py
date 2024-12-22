@@ -24,7 +24,7 @@ async def check_and_send_messages(context: CallbackContext) -> None:
                 chat_id=chat_id,
                 message_id=message_id,
                 from_chat_id=chat_id)
-            logging.info(f"Сообщение {message_id} из чата {chat_id} в чат {user_id}")
+            logging.info(f"Сообщение {message_id} отправлено из чата {chat_id} в чат {user_id}")
 
             cursor.execute("delete from messages where message_id = ?", (message_id,))
             conn.commit()

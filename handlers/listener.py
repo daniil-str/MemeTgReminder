@@ -1,3 +1,4 @@
+import logging
 import re
 import sqlite3
 
@@ -26,7 +27,7 @@ async def listener(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         cursor = connection.cursor()
 
         cursor.execute(insert_query, [(message_id, chat_id, usr_id, time_of_day)][0])
-        # TODO: добавить логгирование
+        logging.info(f"Сообщение {message_id} записано в базу, время {time_of_day}")
 
         connection.commit()
         cursor.close()
