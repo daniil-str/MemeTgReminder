@@ -1,0 +1,39 @@
+name: Deployer
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu
+
+    steps:
+
+      # Получение кода из репозитория
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Настройка Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      # Установка зависимостей
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Настройка SSH
+      - name: Set up SSH
+        uses: web factory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      # Развертывание на сервере
+      - name: Deploy to server
+        run: |
+          ssh user@server 'cd /path/to/project && git pull && pip install -r requirements.txt && sudo systemctl restart memetgreminder.service'
