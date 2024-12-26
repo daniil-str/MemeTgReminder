@@ -32,3 +32,5 @@ async def listener(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         connection.commit()
         cursor.close()
         connection.close()
+
+        await update.message.reply_text(rf"{update.effective_user}, напомню тебе в {time_of_day}")
